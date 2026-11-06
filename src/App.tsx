@@ -1,7 +1,7 @@
 import { type FormEvent, useEffect, useMemo, useState } from 'react';
 import { Activity, ArrowDown, ArrowRight, BookOpen, Check, CircleHelp, Clock3, Download, FileText, FlaskConical, History, Layers3, LockKeyhole, LogOut, Menu, Search, Settings2, ShieldCheck, Sparkles, Trash2, WandSparkles, X } from 'lucide-react';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API = import.meta.env.VITE_API_URL || 'https://senseai-zvav.onrender.com';
 type Sense = {synset:string;pos:string;definition:string;examples:string[];lemmas:string[];score:number;hypernyms:string[];selected:boolean};
 type Result = {status:string;target:string;sentence?:string;start?:number;end?:number;occurrence?:number;occurrences?:number;prediction?:Sense;candidates:Sense[];confidence?:string;score_explanation?:string;method?:string;context?:string;message?:string};
 type HistoryRow = {id:number;sentence:string;target:string;created_at:string;result:Result};
