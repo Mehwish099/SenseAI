@@ -63,6 +63,17 @@ class LoginRequest(BaseModel):
     password: str = Field(min_length=1, max_length=128)
 
 app = FastAPI(title="SenseAI API", version="1.0.0", description="Contextual word sense analysis backed by WordNet glosses.")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://sense-ai-omega.vercel.app",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Vite may select the next free port (for example, 5174) when its default is busy.
 # Keep the development API limited to localhost/loopback origins while accepting that port change.
 app.add_middleware(CORSMiddleware, allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$", allow_methods=["GET", "POST", "DELETE"], allow_headers=["Content-Type", "Authorization"])
